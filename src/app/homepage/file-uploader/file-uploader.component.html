@@ -1,5 +1,20 @@
-<div>
-  <input type="file" #fileInput placeholder="Upload file..." accept=".txt" (change)="fileChange($event)"/>
+<div class="row">
+  <div class="col-lg-4 col-lg-offset-4">
+
+    <div class="input-group">
+      <label class="input-group-btn">
+        <span class="btn btn-primary">
+          Upload File...&hellip; <input type="file" style="display: none;" accept=".txt" (change)="fileChange($event)">
+        </span>
+      </label>
+      <input type="text" class="form-control" readonly>
+    </div>
+
+  </div>
 </div>
 
-<div class="upload-message" *ngIf="uploadMessage">{{uploadMessage}}</div>
+<div class="row">
+  <div class="col-lg-6 col-lg-offset-3">
+    <div class="upload-message alert alert-dismissible alert-info" *ngIf="uploadMessage">{{uploadMessage}}</div>
+  </div>
+</div>

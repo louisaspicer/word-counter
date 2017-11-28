@@ -10,6 +10,7 @@ import {Observable} from "rxjs/Observable";
 })
 export class HomepageComponent {
   fileText: string;
+  ready = false;
   objectKeys = Object.keys;
   wordCountMap = {};
   wordCount$: Observable<any>;
@@ -19,6 +20,7 @@ export class HomepageComponent {
     this.wordCount$ = this.wordCountSubject.asObservable();
     this.wordCount$.subscribe(map => {
       this.wordCountMap = map;
+      this.ready = true;
     });
   }
 
