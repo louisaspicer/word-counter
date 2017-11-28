@@ -17,11 +17,13 @@
       </tr>
       </thead>
     <ng-container *ngFor="let word of objectKeys(wordCountMap)">
+      <tbody>
       <tr>
         <td>{{word}}</td>
         <td>{{wordCountMap[word]}}</td>
         <td>{{isPrimeChecker(wordCountMap[word])}}</td>
       </tr>
+      </tbody>
     </ng-container>
   </table>
 

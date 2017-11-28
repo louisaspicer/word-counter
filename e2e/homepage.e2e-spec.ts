@@ -29,7 +29,7 @@ describe('Homepage', () => {
     fileUploader.uploadFile();
     browser.sleep(5000);
     homepage.getWordCountComponent().clickWordCountButton().then(() => {
-      expect(homepage.getWordCountComponent().getTableFirstRowContent()).toEqual('');
+      expect(homepage.getWordCountComponent().getTableFirstRowContent()).toEqual('Word Count Prime Number?');
     });
   });
 
