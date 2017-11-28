@@ -1,14 +1,15 @@
-import { AppPage } from './app.po';
+import { AppPage } from './pages/app.po';
 
 describe('word-counter App', () => {
   let page: AppPage;
 
   beforeEach(() => {
     page = new AppPage();
+    page.navigateTo();
   });
 
-  it('should display welcome message', () => {
-    page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to app!');
+  it('should display a title', () => {
+    expect(page.getHeaderComponent().getHeaderText()).toEqual('Txt File Word Counter');
   });
+
 });
