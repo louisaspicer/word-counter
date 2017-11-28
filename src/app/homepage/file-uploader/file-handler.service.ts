@@ -2,25 +2,24 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class FileHandlerService {
-
-  constructor() { }
+  countMap = {};
 
   countIndividualWords(text: string): {} {
-    let countMap = {};
+    this.countMap = {};
 
     this.splitTextString(text).forEach(word => {
-      if (!countMap[word]) {
-        countMap[word] = 0;
+      if (!this.countMap[word]) {
+        this.countMap[word] = 0;
       }
-      countMap[word] += 1;
+      this.countMap[word] += 1;
     });
 
-    return countMap;
+    return this.countMap;
   }
 
   private splitTextString(text: string): Array<string> {
     let withoutWhiteSpace = text.trim().replace(/\r?\n|\r/g, '');
-    let withoutSpecialCharacters = withoutWhiteSpace.replace(/[&\/\\#,+()$~%.:*?!<>{}]/g, '');
+    let withoutSpecialCharacters = withoutWhiteSpace.replace(/[^a-zA-Z\s'"]/g, '');
 
     let splitText: Array<string> = withoutSpecialCharacters.toLowerCase().split(' ');
     let withoutRemainingEmptyStrings: Array<string> = splitText.filter(item => item.trim() !== '');
