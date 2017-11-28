@@ -12,4 +12,9 @@ describe('word-counter App', () => {
     expect(page.getHeaderComponent().getHeaderText()).toEqual('Txt File Word Counter');
   });
 
+  it('should have a homepage', () => {
+    const isHomepagePresent = page.getHomepageComponent().getRootElement().isPresent();
+      expect(isHomepagePresent).toEqual(true);
+  });
+
 });

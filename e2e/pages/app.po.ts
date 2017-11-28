@@ -1,4 +1,5 @@
 import {browser} from 'protractor';
+import {HomepageComponent} from '../components/homepage.co';
 import {HeaderComponent} from "../components/header.co";
 
 export class AppPage {
@@ -10,4 +11,7 @@ export class AppPage {
     return new HeaderComponent();
   }
 
+  getHomepageComponent() {
+    return new HomepageComponent();
+  }
 }
