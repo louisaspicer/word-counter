@@ -1,5 +1,6 @@
 import { by, element, ElementFinder } from "protractor";
 import {FileUploaderComponent} from "./file-uploader.co";
+import {WordCountComponent} from "./word-count.co";
 
 export class HomepageComponent {
   appRoot = 'app-homepage';
@@ -9,8 +10,12 @@ export class HomepageComponent {
     return this.rootElement;
   }
 
-  getFileUploader() {
+  getFileUploaderComponent() {
     return new FileUploaderComponent();
+  }
+
+  getWordCountComponent() {
+    return new WordCountComponent();
   }
 
 }

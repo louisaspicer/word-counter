@@ -1,1 +1,19 @@
-<app-file-uploader></app-file-uploader>
+<div class="outer-container">
+  <div class="word-counter-container">
+
+  <app-file-uploader (fileReadComplete)="setFileText($event)"></app-file-uploader>
+
+  <button class="word-count-button" type="button" [disabled]="ready" (click)="count()">COUNT THE WORDS</button>
+
+  <table>
+    <ng-container *ngFor="let word of objectKeys(wordCountMap)">
+      <tr>
+        <td>{{word}}</td>
+        <td>{{wordCountMap[word]}}</td>
+        <td>{{isPrimeChecker(wordCountMap[word])}}</td>
+      </tr>
+    </ng-container>
+  </table>
+
+  </div>
+</div>

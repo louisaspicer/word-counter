@@ -23,7 +23,7 @@ describe('FileUploaderComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should emit text as an output', () => {
+  it('should emit word count map as an output', () => {
     component.readThis(mockInputValue);
     fixture.detectChanges();
 
