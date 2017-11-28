@@ -5,7 +5,7 @@ import { FileUploaderComponent } from './file-uploader.component';
 describe('FileUploaderComponent', () => {
   let component: FileUploaderComponent;
   let fixture: ComponentFixture<FileUploaderComponent>;
-  const mockInputValue: any = { files: [new File(['This is some text'], 'filename')]};
+  const mockInputValue: any = { files: [new File(['This is some text'], 'filename', {type: 'text/plain'})]};
 
 
   beforeEach(async(() => {
@@ -27,6 +27,27 @@ describe('FileUploaderComponent', () => {
 
     component.fileReadComplete.subscribe(text => {
       expect(text).toEqual('This is some text');
+    });
+  });
+
+  it('should emit success message if input is a .txt file', () => {
+    const mockFilename = mockInputValue.files[0].name;
+    component.readThis(mockInputValue);
+    fixture.detectChanges();
+
+    component.uploadMessage$.subscribe(message => {
+      expect(message).toEqual(`${mockFilename} words are ready to be counted!`);
+    });
+  });
+
+  it('should emit error message if input is not a .txt file', () => {
+    const mockIncorrectInputValue: any = { files: [new File(['This is some text'], 'filename', {type: 'image/jpeg'})] };
+
+    component.readThis(mockIncorrectInputValue);
+    fixture.detectChanges();
+
+    component.uploadMessage$.subscribe(message => {
+      expect(message).toEqual('Unable to read file. Please upload a .txt file');
     });
   });
 });

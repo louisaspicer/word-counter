@@ -29,6 +29,11 @@ export class FileUploaderComponent {
     const file: File = inputValue.files[0];
     const myReader: FileReader = new FileReader();
 
+    if (inputValue.files[0].type !== 'text/plain') {
+      self.uploadSubject.next('Unable to read file. Please upload a .txt file');
+      return;
+    }
+
     myReader.onloadend = function() {
       self.fileReadComplete.emit(myReader.result);
       self.uploadSubject.next(`${file.name} words are ready to be counted!`);
