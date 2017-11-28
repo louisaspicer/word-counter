@@ -3,19 +3,18 @@ import { FileHandlerService } from './file-handler.service';
 
 fdescribe('FileHandlerService', () => {
   let service: FileHandlerService;
-  const TEXT = `They were not railway children to begin with. I don't suppose they had
-  ever thought about railways except as a means of getting to Maskelyne
-  and Cook's, the Pantomime, Zoological Gardens, and Madame Tussaud's.`;
+  const TEXT = `They \n were not railway children to begin with. I don't suppose they had
+  ever thought about  railways \n `;
+  const INDIVIDUAL_WORDS = [ 'they', 'were', 'not', 'railway', 'children', 'to', 'begin',
+    'with', 'i', 'don\'t', 'suppose', 'they', 'had', 'ever', 'thought', 'about', 'railways' ];
 
   beforeEach(() => { service = new FileHandlerService(); });
 
-  it('should split text string into individual words', () => {
-    const individualWords = service.splitTextString(TEXT);
-    const expectedArray = ['they', 'were', 'not', 'railway', 'children', 'to', 'begin',
-      'with', 'i', 'don\'t', 'suppose', 'they', 'had', 'ever', 'thought', 'about', 'railways',
-      'except', 'as', 'a', 'means', 'of', 'getting', 'to', 'maskelyne',
-      'and', 'cook\'s', 'the', 'pantomime', 'zoological', 'gardens', 'and', 'madame', 'tussaud\'s'];
+  it('should count the individual words of the text', () => {
+    let count = service.countIndividualWords(TEXT);
+    let expectedMap = { "they": 2, "were": 1, "not": 1, "railway": 1, "children": 1, "to": 1, "begin": 1, "with": 1,
+      "i": 1, "don't": 1, "suppose": 1, "had": 1, "ever": 1, "thought": 1, "about": 1, "railways": 1 };
 
-    expect(individualWords).toEqual(expectedArray);
+    expect(count).toEqual(expectedMap);
   });
 });

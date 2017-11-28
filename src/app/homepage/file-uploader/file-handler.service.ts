@@ -5,7 +5,20 @@ export class FileHandlerService {
 
   constructor() { }
 
-  splitTextString(text: string): Array<string> {
+  countIndividualWords(text: string) {
+    let countMap = {};
+
+    this.splitTextString(text).forEach(word => {
+      if (!countMap[word]) {
+        countMap[word] = 0;
+      }
+      countMap[word] += 1;
+    });
+
+    return countMap;
+  }
+
+  private splitTextString(text: string): Array<string> {
     let withoutWhiteSpace = text.trim().replace(/\r?\n|\r/g, '');
     let withoutSpecialCharacters = withoutWhiteSpace.replace(/[&\/\\#,+()$~%.:*?<>{}]/g, '');
 
@@ -13,7 +26,6 @@ export class FileHandlerService {
     let withoutRemainingEmptyStrings: Array<string> = splitText.filter(item => item.trim() !== '');
 
     return withoutRemainingEmptyStrings;
-
   }
 
 }
