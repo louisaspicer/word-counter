@@ -10,7 +10,7 @@ export class HeaderComponent {
   }
 
   getHeaderText(): promise.Promise<string> {
-    return element(by.className('.navbar-branc')).getText();
+    return element(by.className('navbar-brand')).getText();
   }
 
 }
