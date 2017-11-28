@@ -1,3 +1,5 @@
-<p>
-  file-uploader works!
-</p>
+<div>
+  <input type="file" #fileInput placeholder="Upload file..." accept=".txt" (change)="fileChange($event)"/>
+</div>
+
+<div class="upload-message" *ngIf="uploadMessage">{{uploadMessage}}</div>
